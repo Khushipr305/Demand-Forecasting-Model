@@ -3,8 +3,6 @@ import pandas as pd
 import pickle
 import time
 
-# -------------------- PAGE CONFIG --------------------
-
 st.set_page_config(
     page_title="AI Demand Forecasting",
     page_icon="📦",
@@ -12,7 +10,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# -------------------- LOAD MODEL --------------------
 
 @st.cache_resource
 def load_artifacts():
@@ -64,18 +61,17 @@ div[data-testid="metric-container"]{
 # -------------------- TITLE --------------------
 
 st.markdown(
-    "<div class='title'>📦 AI Demand Forecasting System</div>",
+    "<div class='title'>📦Demand Forecasting System</div>",
     unsafe_allow_html=True
 )
 
 st.markdown(
-    "<div class='subtitle'>Predict Product Demand using Machine Learning (XGBoost)</div>",
+    "<div class='subtitle'>Predict Product Demand using Machine Learning</div>",
     unsafe_allow_html=True
 )
 
 st.divider()
 
-# -------------------- SIDEBAR --------------------
 
 st.sidebar.header("⚙ Product Information")
 
@@ -116,8 +112,6 @@ category = st.sidebar.selectbox(
     label_encoders["Category"].classes_.tolist()
 )
 
-# -------------------- INPUT DATA --------------------
-
 input_data = pd.DataFrame({
     "Price": [price],
     "Discount": [discount],
@@ -133,7 +127,6 @@ for col, encoder in label_encoders.items():
     if col in input_data.columns:
         input_data[col] = encoder.transform(input_data[col])
 
-# -------------------- SUMMARY --------------------
 
 st.subheader("📋 Current Input Summary")
 
@@ -153,7 +146,6 @@ with col3:
 
 st.divider()
 
-# -------------------- BUTTON --------------------
 
 if st.button("🚀 Predict Demand", use_container_width=True):
 
@@ -196,7 +188,6 @@ if st.button("🚀 Predict Demand", use_container_width=True):
             use_container_width=True
         )
 
-# -------------------- FOOTER --------------------
 st.markdown("""
 <style>
 
@@ -227,6 +218,6 @@ st.markdown("""
 </style>
 
 <div class="footer">
-    © 2026 <span>Khushi</span> | AI Demand Forecasting System | Powered by Python • Streamlit • XGBoost | All Rights Reserved
+    © 2026 <span>Khushi</span> | Demand Forecasting System | Powered by Python • Streamlit • XGBoost | All Rights Reserved
 </div>
 """, unsafe_allow_html=True)
